@@ -1,0 +1,1 @@
+let dataUrl_01 = "./token01.js";
