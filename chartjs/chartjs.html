@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡易分析報告</title>
+    <style>
+        body {
+            background-color: lightpink;
+            margin: 10px;
+            padding: 10px;
+
+        }
+
+        div {
+            background-color: lightgoldenrodyellow;
+            width: 70%;
+            /* border: 15px solid grey; */
+            padding: 20px;
+            margin: 20px;
+            flex-wrap: wrap;
+            display: block;
+
+
+        }
+        .title{
+            text-align: center;
+        }
+    </style>
+
+    <!-- 引入BS 4.6 套件 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
+    <script src="path/to/chartjs/dist/chart.js"></script>
+    <script>
+        const myChart = new Chart(ctx, {
+            ...
+        });
+    </script>
+
+</head>
+
+<body>
+    <div></div>
+    <h2 class="title">兔兔美食報</h2>
+    <div><img src="../assets/img/post-2.jpg" alt="food"></div>
+    <!-- <script>
+        const Chart = require('chart.js');
+        const myChart = new Chart(ctx, {
+            ...
+        }); -->
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <div class="card" style="width: 18rem;height: 35rem;">
+        <img class="card-img-top" src="../assets/img/head-1.jpg" alt="Card image cap">
+        <span><br>美食專家: 兔兔</span>
+        <div class="card-body">
+            <canvas id="myChart" width="500" height="500"></canvas>
+            <h5 class="card-title">2022年美食搜尋趨勢</h5>
+            <p class="card-text">南機場夜市美食狠多，炸彈蔥油餅吃了會發胖。</p>
+            <a href="https://www.tcma.gov.taipei/News_Content.aspx?n=FAC14AD2DE4E01A4&sms=32F7BA052C5CA548&s=8B537F8C6C708E0E"
+                class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+    <!-- <div>
+        <canvas id="myChart" width="50" height="70"></canvas>
+    </div> -->
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../assets/img/head-1.jpg" alt="Card image cap">
+        <span><br>美食專家: 兔兔</span>
+        <div class="card-body">
+            <canvas id="myChart2" width="500" height="500"></canvas>
+            <h5 class="card-title">泰山明志美食</h5>
+            <p class="card-text">便當好多吃到好怕，偶爾來杯手搖飲紓壓。</p>
+            <a href="https://nurseilife.cc/taisan/" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+   
+    <!-- <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="../assets/img/head-1.jpg" alt="Card image cap">
+        <span><br>美食專家: 兔兔</span>
+        <div class="card-body">
+            <canvas id="myChart2" width="500" height="500"></canvas>
+            <h5 class="card-title">泰山明志美食</h5>
+            <p class="card-text">便當好多吃到好怕，偶爾來杯手搖飲紓壓。</p>
+            <a href="https://nurseilife.cc/taisan/" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div> --> -->
+
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        // getContext('2d')
+        const myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '美食分析',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('myChart2');
+        const myChart2 = new Chart(ctx2, {
+            type: "bar",
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '美食分析',
+                    data: [10, 25, 5, 40, 50, 60],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        
+    </script>
+
+</body>
+
+</html>

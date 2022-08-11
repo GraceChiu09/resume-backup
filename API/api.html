@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 
 </head>
 
@@ -42,7 +43,7 @@
     <div class="container-fluid">
         <h2>Hoverable Dark Table</h2>
         <p>The .table-hover class adds a hover effect (grey background color) on table rows:</p>
-        <table class="table table-dark table-hover">
+        <table class="table table-dark table-hover " id="myTableid">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -79,6 +80,9 @@
 
     <!-- axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
 
     <script src="../myToken/token.js"></script>
     <script>
@@ -138,7 +142,7 @@
 
             // myBtn
             myBtn.click(function () {
-                axios.get('./js/factory.json')
+                axios.get('../js/factory.json')
                     .then(function (res) {
                         console.log('res', res);
                         let data = res.data;
@@ -192,6 +196,7 @@
                         //     </div>
                         //     `;
                         // myJumbotron.append(greenText);
+                         $('#myTableid').DataTable();
 
                     })
                     .catch(function (error) {
@@ -219,6 +224,8 @@
 
         });
     </script>
+
+
 
 
 
