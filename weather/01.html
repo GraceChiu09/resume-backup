@@ -1,0 +1,39 @@
+<!-- API授權碼: CWB-5F0CBD73-75AB-482A-B50B-BAEB68A754D3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<body>
+
+
+    <script>
+        $(function () {
+  $.ajax({
+    type: "GET",
+    url: "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-5F0CBD73-75AB-482A-B50B-BAEB68A754D3&locationName=",
+    dataType: "xml",
+    error: function (e) {
+      console.log('oh no');
+    },
+    success: function (e) {
+      var xml = e;
+      console.log($(xml));
+    }
+  });
+});
+    </script>
+
+    <script src="assets/vendor/purecounter/purecounter.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/typed.js/typed.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+</body>
+</html>

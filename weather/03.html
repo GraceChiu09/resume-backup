@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <br>
+                <h3 class="text-center">中央氣象開放平台天氣資料</h3>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">縣市</th>
+            <th scope="col">天氣狀態</th>
+            <th scope="col">降雨機率</th>
+            <th scope="col">平均氣溫</th>
+            <th scope="col">天氣狀態</th>
+            <th scope="col">降雨機率</th>
+            <th scope="col">舒適度</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- <tr>
+            <th scope="row">1</th>
+            <td>嘉義市</td>
+            <td>天氣現象</td>
+            
+            <td>最低溫度</td>
+            <td>降雨機率</td>
+          </tr> -->
+           
+          <!-- <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>123</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+            <td>123</td>
+          </tr>
+
+          <tr>
+            <th scope="row">4</th>
+            <td>Joyce</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+            <td>123</td>
+          </tr> -->
+
+        </tbody>
+
+      </table>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script> -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+    </script>
+
+    <script>
+         $.ajax({
+        dataType: 'json',
+        url:'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-5F0CBD73-75AB-482A-B50B-BAEB68A754D3&locationName=',
+        
+        success: function(result){
+            console.log(result);
+            console.log(result.records.location);
+            let data = result.records.location;
+                // 方法二不要入table
+                console.log('data[0]',data[0]['weatherElement']);
+                console.log('data[0]',data[0]['weatherElement'][0].time[0].parameter.parameterName);
+                console.log('data[0]',data[0]['weatherElement'][2].time[0].parameter.parameterName);
+                console.log('data[0]',data[0]['weatherElement'][1].time[0].parameter.parameterName);
+                
+                for(let i =0;i < data.length; i++){
+                    $('tbody').append(`
+                <tr>
+                    <td>${i+1}</td>
+                    <td>${data[i].locationName}</td>
+                    <td>${data[i]['weatherElement'][0].time[0].parameter.parameterName}
+                        <img src="../assets/day/${data[i]['weatherElement'][0].time[0].parameter.parameterValue}.svg" alt="">
+                        </td>
+                    <td>${data[i]['weatherElement'][1].time[0].parameter.parameterName}</td>
+                    <td>${data[i]['weatherElement'][3].time[0].parameter.parameterName}</td>
+                    
+                    
+                    
+                    <td>${data[i]['weatherElement'][0].time[1].parameter.parameterName}
+                        <img src="../assets/day/${data[i]['weatherElement'][0].time[1].parameter.parameterValue}.svg" alt="">
+                        </td>
+                    <td>${data[i]['weatherElement'][1].time[1].parameter.parameterName}</td>
+                    <td>${data[i]['weatherElement'][3].time[1].parameter.parameterName}</td>
+                
+                
+                
+                `);
+
+                }
+               
+
+                
+                
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
